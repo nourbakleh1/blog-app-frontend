@@ -1,0 +1,59 @@
+.Hero-image{
+    background-image: url(../../images/home-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 250px;
+    width: 100%;
+    margin-bottom: 40px;
+    position: relative;
+
+}
+.title::before{
+    content: "";
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #d35400;
+    z-index: -50;
+    transform:rotate(3deg) ;
+    animation: Oranges 2s ease-in-out infinite  ;
+    animation-direction: alternate;}
+.title::after{
+    content: "";
+    position: absolute;
+    top:0;
+    right:  0;
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    z-index: -50;
+    transform:rotate(-3deg);
+    animation: whites 2s ease-in-out infinite ;
+    animation-direction: alternate;
+
+    
+
+}
+@keyframes Oranges {
+    from{
+        transform:rotate(3deg) scale(0.9);
+
+    }
+    to{
+        transform:rotate(-3deg) scale(1.1);
+        background-color: aqua;
+    }
+}
+@keyframes whites {
+    from{
+        transform:rotate(-3deg) scale(0.9);
+    }
+    to{
+        transform:rotate(3deg) scale(1.1);
+        background-color: aqua;
+
+    }
+    
+}

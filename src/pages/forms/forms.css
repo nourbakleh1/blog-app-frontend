@@ -1,0 +1,10 @@
+.picture{
+    background-image: url("../../../images/login.svg");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    width: 100%;
+    object-fit: cover;
+    background-color: white;
+    background-position: center;
+    background-color: rgba(36, 34, 34, 0.366);
+}

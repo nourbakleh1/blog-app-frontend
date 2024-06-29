@@ -4,7 +4,7 @@ import Post_list from '../../components/posts/Post_list';
 import Side_bar from '../../components/side_bar/Side_bar';
 import Pagination from '../../components/pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { allPosts, getAllposts, getPostCount } from '../../ApiCall/postSlice';
+import { getAllposts, getPostCount } from '../../ApiCall/postSlice';
 import { getAllCategory } from '../../ApiCall/categorySlice';
 
 
@@ -12,8 +12,8 @@ import { getAllCategory } from '../../ApiCall/categorySlice';
   
 const postsPage = () => {
   const POST_PER_PAGE=3;
-  const {posts,postCount}=useSelector((state)=>allPosts(state));
-  const {Allcategory}=useSelector((state)=>{return state.category});
+  const {posts,postCount}=useSelector((state)=>state.reducer.post);
+  const {Allcategory}=useSelector((state)=>{return state.reducer.category});
 
   const [current,setCurrent]=useState(1);
   const pages = Math.ceil(postCount/POST_PER_PAGE);

@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import "./forms.css";
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createUser } from '../../ApiCall/authSlice';
 import swal from 'sweetalert';
 const Register = () => {

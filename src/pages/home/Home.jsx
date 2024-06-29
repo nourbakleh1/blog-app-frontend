@@ -6,12 +6,12 @@ import Post_list from '../../components/posts/Post_list';
 import Side_bar from '../../components/side_bar/Side_bar.jsx';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { allPosts, getAllposts } from '../../ApiCall/postSlice.js';
+import { getAllposts } from '../../ApiCall/postSlice.js';
 import { getAllCategory } from '../../ApiCall/categorySlice.js';
 
 const Home = () => {
-  const {posts}=useSelector((state)=>allPosts(state));
-  const {Allcategory}=useSelector((state)=>{return state.category});
+  const {posts}=useSelector((state)=>state.reducer.post);
+  const {Allcategory}=useSelector((state)=>{return state.reducer.category});
 
 
   const dispatch=useDispatch();

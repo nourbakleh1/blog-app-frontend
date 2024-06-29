@@ -7,7 +7,7 @@ import CommentList from "../../components/Comment/CommentList";
 import swal from "sweetalert";
 import UpdatePostModal from "./UpdatePostModal";
 import { useDispatch, useSelector } from "react-redux";
-import { allPosts, deletePost, getPostDitails, toggleLike, updateImagePost } from "../../ApiCall/postSlice";
+import { deletePost, getPostDitails, toggleLike, updateImagePost } from "../../ApiCall/postSlice";
 
 const PostDetails = () => {
   const dispatch=useDispatch();
@@ -15,9 +15,9 @@ const PostDetails = () => {
   const {id} =useParams();
   const [file,setFile]=useState(null);
   const[updatepost,setUpdatePost]=useState(false);
-  const {singlePost}=useSelector((state)=>allPosts(state));
-  const {user}=useSelector((state)=>{
-    return state.auth
+  const {singlePost}=useSelector((state)=>state.reducer.post);
+  const {users:user}=useSelector((state)=>{
+    return state.reducer.auth
   });
     
     

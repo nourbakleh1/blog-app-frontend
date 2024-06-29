@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom";
 import Post_list from "../../components/posts/Post_list";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allPosts, getPostsCategory } from "../../ApiCall/postSlice";
+import { getPostsCategory } from "../../ApiCall/postSlice";
 
 
 const Category = () => {
   const dispatch=useDispatch();
   const {category}=useParams();
-  const {postCategory}=useSelector((state)=>allPosts(state));
+  const {postCategory}=useSelector((state)=>state.reducer.post);
 
     useEffect(()=>{
      const promise= dispatch(getPostsCategory(category));

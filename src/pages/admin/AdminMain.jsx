@@ -9,10 +9,10 @@ import { getAllUSERS } from "../../ApiCall/userSlice";
 
 const AdminMain = () => {
     const dispatch = useDispatch();
-    const { Allcategory } = useSelector(state => state.category);
-    const { AllUsers } = useSelector(state => state.user);
-    const { postCount } = useSelector(state => state.post);
-    const { comments } = useSelector(state => state.comments);
+    const { Allcategory } = useSelector(state => state.reducer.category);
+    const { AllUsers } = useSelector(state => state.reducer.user);
+    const { postCount } = useSelector(state => state.reducer.post);
+    const { comments } = useSelector(state => state.reducer.comments);
 
     useEffect(() => {
         const promise1=dispatch(getAllCategory());

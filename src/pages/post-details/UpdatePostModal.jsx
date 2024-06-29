@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const UpdatePostModal = ({ setUpdatePost, post }) => {
   const navigate=useNavigate();
   const dispatch = useDispatch();
-  const { Allcategory } = useSelector((state) => state.category);
+  const { Allcategory } = useSelector((state) => state.reducer.category);
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
   const [category, setCategory] = useState(post.category);

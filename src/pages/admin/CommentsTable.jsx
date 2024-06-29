@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import {  DeleteCommentAdmin, getAllComments } from "../../ApiCall/CommentsSlice";
 const CommentsTable = () => {
   const dispatch = useDispatch();
-  const { comments } = useSelector(state => state.comments);
+  const { comments } = useSelector(state => state.reducer.comments);
 
   useEffect(() => {
     const promise=dispatch(getAllComments());

@@ -7,11 +7,7 @@ import { privateReq } from "../lib/privateReq";
 
 export const createComments=createAsyncThunk("comments/createComments",async(data,ThunkApi)=>{
     try{
-            const insert=await privateReq.post("/api/comments",data,{
-                headers:{
-                    Authorization:"Bearer " + ThunkApi.getState()?.auth.user.token
-                }
-            });
+            const insert=await privateReq.post("/api/comments",data);
             ThunkApi.dispatch(setPushComment(insert.data));
             return insert.data;
     }

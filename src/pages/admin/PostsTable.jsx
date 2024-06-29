@@ -8,7 +8,7 @@ import { deletePost, getAllpostsByAdmin } from "../../ApiCall/postSlice";
 
 const PostsTable = () => {
     const dispatch = useDispatch();
-    const { posts } = useSelector(state => state.post);
+    const { posts } = useSelector(state => state.reducer.post);
     useEffect(() => {
      const pro=dispatch(getAllpostsByAdmin());
 

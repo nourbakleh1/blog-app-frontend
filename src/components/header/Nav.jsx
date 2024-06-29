@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 
 const Nav = ({setToggle,toggle}) => {
 
-  const {user}=useSelector((state)=>{
-    return state.auth});
+  const {users}=useSelector((state)=>{
+    return state.reducer.auth});
   useEffect(()=>{
     if(window.scrollX >=500){
       console.log("yes its moving")
@@ -41,7 +41,7 @@ const Nav = ({setToggle,toggle}) => {
         <i className="bi bi-collection"></i>Posts
         </NavLink>
 
-          {user && <NavLink to="/posts/createPost" onClick={()=>setToggle((prev)=>{
+          {users && <NavLink to="/posts/createPost" onClick={()=>setToggle((prev)=>{
             document.getElementById("nav").classList.add("hidden");
               return !prev})} className='p-[10px]  hover:bg-blue-300  hover:p-[12px] hover:text-white transition-all delay-[0.3s] rounded-[10px]'>
             <i className="bi bi-file-earmark-plus"></i>Create
@@ -49,7 +49,7 @@ const Nav = ({setToggle,toggle}) => {
           }
        
 
-            {user?.isAdmin &&
+            {users?.isAdmin &&
               <NavLink to="admin-dashboard" onClick={()=>setToggle((prev)=>{
               document.getElementById("nav").classList.add("hidden");
               return !prev})} className='p-[10px]  hover:bg-blue-300  hover:p-[12px] hover:text-white transition-all delay-[0.3s] rounded-[10px]'>

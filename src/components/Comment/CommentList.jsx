@@ -10,7 +10,7 @@ import { DeleteComment } from "../../ApiCall/CommentsSlice";
 
 const CommentList = ({ comments }) => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { users:user } = useSelector((state) => state.reducer.auth);
 
   const [updateComment, setUpdateComment] = useState(false);
   const [commentForUpdate, setCommentForUpdate] = useState(null);

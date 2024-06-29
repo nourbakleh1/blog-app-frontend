@@ -6,7 +6,7 @@ import { verifyToken } from "../../ApiCall/authSlice";
 
 const VerifyEmail = () => {
   const dispatch = useDispatch();
-  const { isEmailVerified } = useSelector(state => state.auth);
+  const { isEmailVerified } = useSelector(state => state.reducer.auth);
   
   const { user_id, token } = useParams();
   

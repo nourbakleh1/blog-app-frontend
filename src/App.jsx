@@ -20,10 +20,15 @@ import ResetPassword from "./pages/forms/ResetPassword";
 import Error from "./pages/Error-page/Error";
 import { useSelector } from "react-redux";
 import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
+import { useEffect } from "react";
 
 function App() {
-  const {user}=useSelector((state)=>{
-    return state.auth});
+  const {users}=useSelector((state)=>{
+    return state.reducer.auth});
+
+    useEffect(()=>{
+      localStorage.setItem("token",JSON.stringify(users.token));
+    },[]);
     
   return (
     <>
@@ -36,11 +41,11 @@ function App() {
     <Routes>
       <Route  path="/" element={<Home />} ></Route>
       
-      <Route  path="/login" element={user ?<Navigate to="/"/>: <Login />} ></Route>
-      <Route  path="/register" element={user ?<Navigate to="/"/>:<Register />} ></Route>
-      <Route  path="/forgot-password" element={user ?<Navigate to="/"/>:<ForgotPassword />} ></Route>
-      <Route  path="/reset-password" element={user ?<Navigate to="/"/>:<ResetPassword />} ></Route>
-      <Route  path="/users/:user_id/verify/:token" element={user ?<Navigate to="/"/>:<VerifyEmail />} ></Route>
+      <Route  path="/login" element={users ?<Navigate to="/"/>: <Login />} ></Route>
+      <Route  path="/register" element={users ?<Navigate to="/"/>:<Register />} ></Route>
+      <Route  path="/forgot-password" element={users ?<Navigate to="/"/>:<ForgotPassword />} ></Route>
+      <Route  path="/reset-password" element={users ?<Navigate to="/"/>:<ResetPassword />} ></Route>
+      <Route  path="/users/:user_id/verify/:token" element={users ?<Navigate to="/"/>:<VerifyEmail />} ></Route>
 
 
 
@@ -52,13 +57,13 @@ function App() {
       <Route  path="details/:id" element={<PostDetails />} />
       <Route  path="categories/:category" element={<Category />} />
       <Route path='profile/:id' element=<Profile/> />
-      <Route  path="createPost" element={user? <CreatePost /> : <Navigate to="/"/>} />
+      <Route  path="createPost" element={users? <CreatePost /> : <Navigate to="/"/>} />
       </Route>
      
 
 
 
-      <Route  path="/admin-dashboard" element={user?.isAdmin ?<AdminDashboard />:<Navigate to="/"/>} />
+      <Route  path="/admin-dashboard" element={users?.isAdmin ?<AdminDashboard />:<Navigate to="/"/>} />
       <Route  path="/admin-dashboard/users-table" element={<UsersTable />} />
       <Route  path="/admin-dashboard/posts-table" element={<PostsTable />} />
       <Route  path="/admin-dashboard/categories-table" element={<CategoriesTable />} />

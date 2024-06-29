@@ -1,4 +1,5 @@
 import axios from "axios";
+// console.log(JSON.parse(localStorage.getItem("token"))
 export const privateReq= axios.create(
         {
             baseURL:"http://localhost:8000",
@@ -9,7 +10,7 @@ export const privateReq= axios.create(
     // Add a request interceptor
 privateReq.interceptors.request.use(function (config) {
     // Do something before request is sent
-    config.headers.Authorization="bearer " + JSON.parse(localStorage.getItem("userInfo")).token;
+    config.headers.Authorization="bearer " + JSON.parse(localStorage.getItem("token"));
     return config;
   }, function (error) {
     // Do something with request error

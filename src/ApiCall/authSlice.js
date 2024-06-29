@@ -6,7 +6,7 @@ export const loginUser=createAsyncThunk("auth/loginUser",async(data,ThunkApi)=>{
 
     try{
         const user=(await publicReq.post("/api/auth/login",data));
-        localStorage.setItem("userInfo",JSON.stringify(user.data));
+        // localStorage.setItem("userInfo",JSON.stringify(user.data));
 
         return user.data;
     }
@@ -34,23 +34,21 @@ export const verifyToken=createAsyncThunk("auth/verifyToken",async({user_id,toke
         toast.error(error.response.data.message);
     }
 });
-const initialState={isLoading:true,isError:false,error:null,user:
-    localStorage.getItem("userInfo") ?
- JSON.parse(localStorage.getItem("userInfo")):null,isEmailVerified:false}
+const initialState={isLoading:true,isError:false,error:null,users:null,isEmailVerified:false}
 
 const authSlice=createSlice({
     name:"auth",
     initialState,
     reducers:{
             logout:(state)=>{
-              localStorage.removeItem("userInfo");
-                state.user=null
+            //   localStorage.removeItem("userInfo");
+                state.users=null
             },
             setUserName:(state,action)=>{
-                state.user.username=action.payload
+                state.users.username=action.payload
             },
             setUploadImage:(state,action)=>{
-                state.user.profilePhoto=action.payload;
+                state.users.profilePhoto=action.payload;
             }
     },
     extraReducers:
@@ -63,7 +61,7 @@ const authSlice=createSlice({
             .addCase(loginUser.fulfilled,(state,action)=>{
                 state.isLoading=false;
                 state.isError=false;
-                state.user=action.payload;
+                state.users=action.payload;
 
             }).addCase(
                 loginUser.rejected,(state,action)=>{

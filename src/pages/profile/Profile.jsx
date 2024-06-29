@@ -15,9 +15,9 @@ import { Oval } from "react-loader-spinner";
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const { user,isLoading,isError,error} = useSelector((state) => state.user);
-  const {user:auth}=useSelector((state)=>{
-    return state.auth
+  const { user,isLoading,isError,error} = useSelector((state) => state.reducer.user);
+  const {users:auth}=useSelector((state)=>{
+    return state.reducer.auth
   });
   const [file, setFile] = useState(null);
   const [updateProfile, setUpdateProfile] = useState(false);

@@ -41,10 +41,7 @@ export const updateUserData=createAsyncThunk("user/updateUserData",async({id,upd
 
     try{
         const result= await privateReq.put(`/api/users/profile/${id}`,updatedUser);
-        // localstorage
-        const local=JSON.parse(localStorage.getItem("userInfo"));
-        local.username = updatedUser.username;
-        localStorage.setItem("userInfo",JSON.stringify(local));
+        
         dispatch(setUserName(updatedUser.username));
         return result.data
 
@@ -63,10 +60,7 @@ export const UpdateProfileImage=createAsyncThunk("user/UpdateProfileImage",async
                 "Content-Type":"multipart/form-data"
             }
         });
-        //local
-        const local=JSON.parse(localStorage.getItem("userInfo"));
-        local.profilePhoto=photo.data.profilePhoto;
-        localStorage.setItem("userInfo",JSON.stringify(local));
+        
 
         thunkApi.dispatch(setUploadImage(photo.data.profilePhoto));
         return photo.data
@@ -120,7 +114,7 @@ const userSlice=createSlice({
             state.user.profilePhoto=action.payload.profilePhoto;
         })
         .addCase(getAllUSERS.fulfilled,(state,action)=>{
-            state.AllUsers=action.payload.data;
+            state.AllUsers=action.payload?.data;
         })
         .addCase(deleteUserProfile.fulfilled,(state,action)=>{
             state.AllUsers=state.AllUsers?.filter((user)=>{

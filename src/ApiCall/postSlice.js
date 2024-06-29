@@ -237,8 +237,8 @@ const PostsSlice=createSlice({
     }
 });
 
-export const allPosts=(state)=>{
-    return state.post;
-}
+// export const allPosts=(state)=>{
+//     return state.reducer.post;
+// }
 export const {setDeleteComment,setPushComment,setupdateComment}=PostsSlice.actions;
 export default PostsSlice.reducer;

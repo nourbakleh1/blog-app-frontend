@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
-import { allPosts, createPost } from '../../ApiCall/postSlice';
+import {  createPost } from '../../ApiCall/postSlice';
 import { useNavigate } from 'react-router-dom';
 import { Audio, MutatingDots, ThreeCircles } from 'react-loader-spinner';
 import { getAllCategory } from '../../ApiCall/categorySlice';
@@ -13,14 +13,14 @@ const CreatePost = () => {
   const [category,setCategory]=useState("");
   const [description,setDescription]=useState("");
   const [image,setImage]=useState(null);
-  const {Allcategory}=useSelector((state)=>{return state.category});
+  const {Allcategory}=useSelector((state)=>{return state.reducer.category});
 
   const formdata= new FormData();
   formdata.append("title",title);
   formdata.append("category",category);
   formdata.append("description",description);
   formdata.append("image",image);
-  const {isLoading}=useSelector((state)=>allPosts(state));
+  const {isLoading}=useSelector((state)=>state.reducer.post);
   useEffect(()=>{
     const promise=dispatch(getAllCategory());
 

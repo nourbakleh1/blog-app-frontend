@@ -7,7 +7,7 @@ import { deleteCategory, getAllCategory } from "../../ApiCall/categorySlice";
 
 const CategoriesTable = () => {
   const dispatch = useDispatch();
-  const { Allcategory } = useSelector(state => state.category);
+  const { Allcategory } = useSelector(state => state.reducer.category);
 
   useEffect(() => {
     const promise=dispatch(getAllCategory());

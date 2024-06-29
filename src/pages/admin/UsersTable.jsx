@@ -8,9 +8,9 @@ import { deleteUserProfile, getAllUSERS } from "../../ApiCall/userSlice";
 
 const UsersTable = () => {
   const dispatch = useDispatch();
-  const { AllUsers } = useSelector(state => state.user);
+  const { AllUsers } = useSelector(state => state.reducer.user);
 
-  // const { profiles, isProfileDeleted } = useSelector((state) => state.profile);
+  
 
   useEffect(() => {
     const prom=dispatch(getAllUSERS());

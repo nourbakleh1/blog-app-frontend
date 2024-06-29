@@ -9,8 +9,8 @@ const Rightheader = () => {
   const dispatch=useDispatch();
   const [dropdown,setDropdown]=useState(false);
   const navigate=useNavigate();
-  const {user}=useSelector((state)=>{
-    return state.auth});
+  const {users}=useSelector((state)=>{
+    return state.reducer.auth});
 
   const HandelLogout=()=>{
     setDropdown(false);
@@ -20,7 +20,7 @@ const Rightheader = () => {
   return (
     
     <><div className='flex justify-between bg-white' >
-    {user ?
+    {users ?
       (
         <>
           <div className="header-right-user-info">
@@ -28,17 +28,17 @@ const Rightheader = () => {
               onClick={() => setDropdown((prev) => !prev)}
               className="header-right-username"
             >
-              {user?.username}
+              {users?.username}
             </span>
             <img
-              src={user?.profilePhoto?.url}
+              src={users?.profilePhoto?.url}
               alt="user photo"
               className="header-right-user-photo"
             />
             {dropdown && (
               <div className="header-right-dropdown">
                 <Link
-                  to={`posts/profile/${user?._id}`}
+                  to={`posts/profile/${users?._id}`}
                   className="header-dropdown-item"
                   onClick={() => setDropdown(false)}
                 >

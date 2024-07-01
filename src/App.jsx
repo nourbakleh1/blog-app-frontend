@@ -21,13 +21,12 @@ import Error from "./pages/Error-page/Error";
 import { useSelector } from "react-redux";
 import VerifyEmail from "./pages/verifyEmail/VerifyEmail";
 import { useEffect } from "react";
-
 function App() {
   const {users}=useSelector((state)=>{
     return state.reducer.auth});
 
     useEffect(()=>{
-      localStorage.setItem("token",JSON.stringify(users.token));
+      localStorage.setItem("token",JSON.stringify(users?.token));
     },[]);
     
   return (
@@ -42,6 +41,7 @@ function App() {
       <Route  path="/" element={<Home />} ></Route>
       
       <Route  path="/login" element={users ?<Navigate to="/"/>: <Login />} ></Route>
+
       <Route  path="/register" element={users ?<Navigate to="/"/>:<Register />} ></Route>
       <Route  path="/forgot-password" element={users ?<Navigate to="/"/>:<ForgotPassword />} ></Route>
       <Route  path="/reset-password" element={users ?<Navigate to="/"/>:<ResetPassword />} ></Route>
